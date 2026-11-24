@@ -83,10 +83,7 @@ class Database
         try {
             $statement = $this->connection->prepare($sql);
             $statement->execute(
-                array_merge(
-                    array_filter($fields),
-                    [$id]
-                )
+                [...array_filter($values), $id]
             );
 
             return true;

@@ -29,8 +29,14 @@ require_once BASE_PATH . '/template/admin/layouts/header.php';
                         <?= $category['name'] ?>
                     </td>
                     <td>
-                        <a role="button" href="" class="btn btn-sm btn-info my-0 mx-1 text-white">update</a>
-                        <a role="button" href="" class="btn btn-sm btn-danger my-0 mx-1 text-white">delete</a>
+                        <a role="button" href="<?= url('admin/category/edit/' . $category['id']) ?>"
+                            class="btn btn-sm btn-info my-0 mx-1 text-white">
+                            update
+                        </a>
+                        <a role="button" href="<?= url('admin/category/delete/' . $category['id']) ?>"
+                            class="btn btn-sm btn-danger my-0 mx-1 text-white">
+                            delete
+                        </a>
                     </td>
                 </tr>
             <?php endforeach ?>

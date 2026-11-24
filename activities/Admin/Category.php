@@ -24,4 +24,24 @@ class Category extends Admin
         $db->insert('categories', array_keys($request), $request);
         $this->redirect('admin/category');
     }
+
+    public function edit(int $id)
+    {
+        $db = new Database;
+        $category = $db
+            ->select("SELECT * FROM categories WHERE id=?", [$id])
+            ->fetch();
+
+        if (!$category) {
+            $this->redirectBack();
+        }
+
+        require_once BASE_PATH . '/template/admin/categories/edit.php';
+    }
+
+    public function update(array $request, int $id) {
+        $db = new Database;
+        $db->update("categories", $id, array_keys($request), $request);
+        $this->redirect('admin/category');
+    }
 }

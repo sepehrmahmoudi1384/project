@@ -1,6 +1,6 @@
 <?php
 
-use database\CreateDB;
+use Admin\Admin;
 
 session_start();
 
@@ -22,13 +22,13 @@ define('DB_OPTIONS', [
 // 
 // class include
 require_once 'database/Database.php';
-require_once 'database/CreateDB.php';
+// require_once 'database/CreateDB.php';
 require_once 'activities/Admin/Admin.php';
 require_once 'activities/Admin/Category.php';
 
 //
 // Create tables (run it once)
-// $creator = new CreateDB;
+// $creator = new \database\CreateDB;
 // $creator->run();
 
 // display errors
