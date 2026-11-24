@@ -40,11 +40,11 @@ require_once BASE_PATH . '/template/admin/layouts/header.php';
                         <?= $post['view'] ?>
                     </td>
                     <td>
-                        <?php if ($post['breaking_news'] === 1): ?>
+                        <?php if ($post['breaking_news'] === 2): ?>
                             <span class="badge badge-success">#breaking_news</span>
                         <?php endif ?>
 
-                        <?php if ($post['selected'] === 1): ?>
+                        <?php if ($post['selected'] === 2): ?>
                             <span class="badge badge-dark">#editor_selected</span>
                         <?php endif ?>
                     </td>
@@ -55,23 +55,26 @@ require_once BASE_PATH . '/template/admin/layouts/header.php';
                         <?= $post['cat_name'] ?>
                     </td>
                     <td>
-                        <img 
-                            style="width: 80px;" src="<?= asset($post['image']) ?>" 
+                        <img
+                            style="width: 80px;" src="<?= asset($post['image']) ?>"
                             alt="image: <?= $post['title'] ?>">
                     </td>
                     <td style="width: 25rem;">
-                        <a role="button" class="btn btn-sm btn-warning btn-dark text-white" href="">
+                        <a role="button" class="btn btn-sm btn-warning btn-dark text-white"
+                            href="<?= url('admin/post/breaking-news/' . $post['id']) ?>">
+
                             <?php
-                            if ($post['breaking_news'] === 1) {
+                            if ($post['breaking_news'] === 2) {
                                 echo 'remove breaking news';
                             } else {
                                 echo 'add breaking news';
                             }
                             ?>
                         </a>
-                        <a role="button" class="btn btn-sm btn-warning btn-dark text-white" href="">
+                        <a role="button" class="btn btn-sm btn-warning btn-dark text-white"
+                            href="<?= url('admin/post/selected/' . $post['id']) ?>">
                             <?php
-                            if ($post['selected'] === 1) {
+                            if ($post['selected'] === 2) {
                                 echo 'remove selected';
                             } else {
                                 echo 'add selected';
