@@ -21,4 +21,14 @@ class Post extends Admin
 
         require_once BASE_PATH . '/template/admin/posts/index.php';
     }
+
+    public function create()
+    {
+        $db = new Database;
+        $categories = $db
+            ->select("SELECT * FROM categories")
+            ->fetchAll();
+            
+        require_once BASE_PATH . '/template/admin/posts/create.php';
+    }
 }
