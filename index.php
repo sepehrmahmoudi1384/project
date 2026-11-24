@@ -146,8 +146,8 @@ function uri(
 
     $parameters = [];
     for ($i = 0; $i < count($reservedUrlArray); $i++) {
-        if (preg_match('/{(.+)}/i', $reservedUrlArray[$i], $matches)) {
-            $parameters[$matches[1]] = $currentUrlArray[$i];
+        if (preg_match('/{(.+)}/i', $reservedUrlArray[$i])) {
+            $parameters[] = $currentUrlArray[$i];
         } elseif ($reservedUrlArray[$i] !== $currentUrlArray[$i]) {
             return;
         }

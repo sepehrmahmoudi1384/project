@@ -5,6 +5,7 @@ namespace database;
 use PDO;
 use PDOException;
 use PDOStatement;
+use ValueError;
 
 class Database
 {
@@ -83,7 +84,10 @@ class Database
         try {
             $statement = $this->connection->prepare($sql);
             $statement->execute(
-                [...array_filter($values), $id]
+                array_merge(
+                    array_filter(array_values($values)),
+                    [$id]
+                )
             );
 
             return true;

@@ -33,15 +33,22 @@ class Category extends Admin
             ->fetch();
 
         if (!$category) {
-            $this->redirectBack();
+            $this->redirect('admin/category');
         }
 
         require_once BASE_PATH . '/template/admin/categories/edit.php';
     }
 
-    public function update(array $request, int $id) {
+    public function update(array $request, int $id)
+    {
         $db = new Database;
         $db->update("categories", $id, array_keys($request), $request);
+        $this->redirect('admin/category');
+    }
+
+    public function delete(int $id) {
+        $db = new Database;
+        $db->delete('categories', $id);
         $this->redirect('admin/category');
     }
 }
