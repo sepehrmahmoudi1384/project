@@ -104,4 +104,43 @@ class Post extends Admin
 
         $this->redirectBack();
     }
+
+    public function edit($id)
+    {
+        $db = new Database;
+        $post = $db
+            ->select("SELECT * FROM posts WHERE id = ?", [$id])
+            ->fetch();
+        $categories = $db
+            ->select("SELECT * FROM categories")
+            ->fetchAll();
+
+        if (!$post) {
+            $this->redirect('admin/post');
+        }
+        require_once BASE_PATH . '/template/admin/posts/edit.php';
+    }
+
+    public function update($request, $id)
+    {
+        $realTimestamp = intval(substr($request['published_at'], 0, -3));
+        $request['published_at'] = date('Y-m-d H:i:s', $realTimestamp);
+        $db = new Database;
+        if ($request['cat_id']) {
+
+            if ($request['image']['tmp_name'] != null) {
+                $post = $db->select("SELECT * FROM posts WHERE id=?", [$id])->fetch();
+                $this->removeImage($post['image']);
+                $request['image'] = $this->saveImage($request['image'], 'post-image');
+            } else {
+                unset($request['image']);
+            }
+
+            $request = array_merge($request, ['user_id' => 1]);
+            $db->update('posts', $id, array_keys($request), $request);
+            $this->redirect('admin/post');
+        } else {
+            $this->redirect('admin/post');
+        }
+    }
 }
