@@ -46,8 +46,10 @@ class Admin
     protected function removeImage(
         string $path
     ): bool {
-        $path = trim(BASE_PATH, '/ ') . '/' . trim($path, '/ ');
-        if(file_exists($path)){
+
+        $path = BASE_PATH . '/' . trim($path, '/ ');
+
+        if (file_exists($path)) {
             unlink($path);
             return true;
         }

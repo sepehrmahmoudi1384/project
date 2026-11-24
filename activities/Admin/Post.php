@@ -42,11 +42,25 @@ class Post extends Admin
             if ($request['image']) {
                 $request = array_merge($request, ['user_id' => 1]);
                 $db->insert('posts', array_keys($request), $request);
+                $this->redirect('admin/post');
             } else {
                 $this->redirect('admin/post');
             }
         } else {
             $this->redirect('admin/post');
         }
+    }
+
+    public function delete(int $id) {
+        $db = new Database;
+        $post = $db
+            ->select('SELECT * FROM posts WHERE id=?', [$id])
+            ->fetch();
+
+        if($post){
+            $this->removeImage($post['image']);
+            $db->delete('posts', $id);
+        }
+        $this->redirectBack();
     }
 }
