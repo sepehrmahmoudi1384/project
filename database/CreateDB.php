@@ -56,7 +56,7 @@ class CreateDB extends Database
         `updated_at` datetime DEFAULT NULL
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;",
 
-        "CREATE TABLE `news` (
+        "CREATE TABLE `posts` (
         `id` int(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
         `title` varchar(120) NOT NULL,
         `summary` text NOT NULL,
@@ -71,8 +71,8 @@ class CreateDB extends Database
         `published_at` datetime NOT NULL,
         `created_at` datetime NOT NULL,
         `updated_at` datetime DEFAULT NULL,
-        CONSTRAINT `fk_categories_news` FOREIGN KEY (`cat_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-        CONSTRAINT `fk_users_news` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+        CONSTRAINT `fk_categories_posts` FOREIGN KEY (`cat_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+        CONSTRAINT `fk_users_posts` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;",
 
         "CREATE TABLE `comments` (
@@ -83,7 +83,7 @@ class CreateDB extends Database
         `status` enum('unseen','seen','approved') NOT NULL DEFAULT 'unseen',
         `created_at` datetime NOT NULL,
         `updated_at` datetime DEFAULT NULL,
-        CONSTRAINT `fk_news_comments` FOREIGN KEY (`post_id`) REFERENCES `news` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+        CONSTRAINT `fk_posts_comments` FOREIGN KEY (`post_id`) REFERENCES `posts` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
         CONSTRAINT `fk_users_comments` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;"
     ];
