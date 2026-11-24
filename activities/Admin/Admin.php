@@ -30,11 +30,11 @@ class Admin
         }
 
         $imageTemp = $image['tmp_name'];
-        $imagePath = 'public/' . trim($imagePath, '/ ') . '/';
+        $imagePath = 'public/' . trim($imagePath, '/ ') . '/' . $imageName;
 
         if (is_uploaded_file($imageTemp)) {
             if (move_uploaded_file($imageTemp, $imagePath)) {
-                return $imagePath . $imageName;
+                return $imagePath;
             } else {
                 return false;
             }

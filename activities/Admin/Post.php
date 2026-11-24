@@ -28,7 +28,25 @@ class Post extends Admin
         $categories = $db
             ->select("SELECT * FROM categories")
             ->fetchAll();
-            
+
         require_once BASE_PATH . '/template/admin/posts/create.php';
+    }
+
+    public function store(array $request)
+    {
+        $realTimestamp = intval(substr($request['published_at'], 0, -3));
+        $request['published_at'] = date('Y-m-d H:i:s', $realTimestamp);
+        $db = new Database;
+        if ($request['cat_id']) {
+            $request['image'] = $this->saveImage($request['image'], 'post-image');
+            if ($request['image']) {
+                $request = array_merge($request, ['user_id' => 1]);
+                $db->insert('posts', array_keys($request), $request);
+            } else {
+                $this->redirect('admin/post');
+            }
+        } else {
+            $this->redirect('admin/post');
+        }
     }
 }

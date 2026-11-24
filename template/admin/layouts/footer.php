@@ -24,7 +24,7 @@
                 }
             },
             observer: true,
-            altField: '#published_at'
+            altField: '#published_at',
         });
     });
 </script>

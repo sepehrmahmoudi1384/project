@@ -54,7 +54,11 @@ require_once BASE_PATH . '/template/admin/layouts/header.php';
                     <td>
                         <?= $post['cat_name'] ?>
                     </td>
-                    <td><img style="width: 80px;" src="" alt=""></td>
+                    <td>
+                        <img 
+                            style="width: 80px;" src="<?= asset($post['image']) ?>" 
+                            alt="image: <?= $post['title'] ?>">
+                    </td>
                     <td style="width: 25rem;">
                         <a role="button" class="btn btn-sm btn-warning btn-dark text-white" href="">
                             <?php
@@ -75,9 +79,9 @@ require_once BASE_PATH . '/template/admin/layouts/header.php';
                             ?>
                         </a>
                         <hr class="my-1" />
-                        <a role="button" class="btn btn-sm btn-primary text-white" 
+                        <a role="button" class="btn btn-sm btn-primary text-white"
                             href="<?= url('admin/post/edit/' . $post['id']) ?>">edit</a>
-                        <a role="button" class="btn btn-sm btn-danger text-white" 
+                        <a role="button" class="btn btn-sm btn-danger text-white"
                             href="<?= url('admin/post/delete/' . $post['id']) ?>">delete</a>
                     </td>
                 </tr>
