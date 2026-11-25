@@ -25,7 +25,7 @@ require_once BASE_PATH . '/template/admin/layouts/header.php';
                     <td><?= $user['username'] ?></td>
                     <td><?= $user['email'] ?></td>
                     <td><?= $user['permission'] ?></td>
-                    <td><?= $user['created_at'] ?></td>
+                    <td><?= jalali_date($user['created_at']) ?></td>
                     <td>
 
                         <?php if ($user['permission'] === 'admin'): ?>

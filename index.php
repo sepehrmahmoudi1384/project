@@ -23,14 +23,8 @@ define('DB_OPTIONS', [
 date_default_timezone_set(DEFAULT_TIMEZONE);
 
 // 
-// class include
-require_once 'database/Database.php';
-require_once 'database/CreateDB.php';
-require_once 'activities/Admin/Admin.php';
-require_once 'activities/Admin/Category.php';
-require_once 'activities/Admin/Post.php';
-require_once 'activities/Admin/Banner.php';
-require_once 'activities/Admin/User.php';
+// class autoload
+require_once 'vendor/autoload.php';
 
 //
 // Create tables (run it once)
@@ -42,6 +36,11 @@ displayError(DISPLAY_ERROR);
 
 //
 // helpers
+
+function jalali_date($date)
+{
+    return \Parsidev\Jalali\jDate::forge($date)->format('datetime');
+}
 
 function protocol()
 {
@@ -210,4 +209,4 @@ uri('admin/user/delete/{id}', 'Admin\User', 'delete');
 
 
 // show 404 if no url match
-echo '404 - Not Found'; 
+echo '404 - Not Found';
