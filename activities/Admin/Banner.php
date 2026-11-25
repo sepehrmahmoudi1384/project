@@ -22,7 +22,7 @@ class Banner extends Admin
     {
         $db = new Database;
         $request['image'] = $this->saveImage($request['image'], 'banner-image');
-        if($request['image']){
+        if ($request['image']) {
             $db->insert('banners', array_keys($request), $request);
         }
         $this->redirect('admin/banner');
@@ -31,27 +31,45 @@ class Banner extends Admin
     public function edit(int $id)
     {
         $db = new Database;
-        $category = $db
-            ->select("SELECT * FROM categories WHERE id=?", [$id])
+        $banner = $db
+            ->select("SELECT * FROM banners WHERE id=?", [$id])
             ->fetch();
 
-        if (!$category) {
-            $this->redirect('admin/category');
+        if (!$banner) {
+            $this->redirect('admin/banner');
         }
 
-        require_once BASE_PATH . '/template/admin/categories/edit.php';
+        require_once BASE_PATH . '/template/admin/banners/edit.php';
     }
 
     public function update(array $request, int $id)
     {
         $db = new Database;
-        $db->update("categories", $id, array_keys($request), $request);
-        $this->redirect('admin/category');
+        if ($request['image']['tmp_name']) {
+            $banner = $db
+                ->select('SELECT * FROM banners WHERE id=?', [$id])
+                ->fetch();
+            $request['image'] = $this->saveImage($request['image'], 'banner-image');
+            $this->removeImage($banner['image']);
+        } else {
+            unset($request['image']);
+        }
+        $db->update("banners", $id, array_keys($request), $request);
+        $this->redirect('admin/banner');
     }
 
-    public function delete(int $id) {
+    public function delete(int $id)
+    {
         $db = new Database;
-        $db->delete('categories', $id);
-        $this->redirect('admin/category');
+        $banner = $db
+            ->select("SELECT * FROM banners WHERE id=?", [$id])
+            ->fetch();
+
+        if ($banner) {
+            $this->removeImage($banner['image']);
+            $db->delete('banners', $id);
+        }
+
+        $this->redirectBack();
     }
 }

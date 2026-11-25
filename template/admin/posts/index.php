@@ -52,7 +52,7 @@ require_once BASE_PATH . '/template/admin/layouts/header.php';
                         <?= $post['username'] ?>
                     </td>
                     <td>
-                        <?= $post['cat_name'] ?>
+                        <?= $post['category_name'] ?>
                     </td>
                     <td>
                         <img

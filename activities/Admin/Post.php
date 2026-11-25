@@ -11,7 +11,7 @@ class Post extends Admin
         $db = new Database;
         $posts = $db
             ->select(
-                "SELECT p.*, u.username, c.name AS cat_name
+                "SELECT p.*, u.username, c.name category_name
                 FROM posts p 
                 JOIN users u ON p.user_id = u.id 
                 JOIN categories c ON p.cat_id = c.id

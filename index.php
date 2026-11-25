@@ -6,6 +6,7 @@ session_start();
 
 //
 // config
+define('DEFAULT_TIMEZONE', 'Iran');
 define('BASE_PATH', __DIR__);
 define('BASE_URL', currentDomain() . '/project/');
 define('DISPLAY_ERROR', true);
@@ -18,6 +19,8 @@ define('DB_OPTIONS', [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
 ]);
+
+date_default_timezone_set(DEFAULT_TIMEZONE);
 
 // 
 // class include
