@@ -37,7 +37,7 @@ displayError(DISPLAY_ERROR);
 //
 // helpers
 
-function jalali_date($date)
+function jalali_date(string $date)
 {
     return \Parsidev\Jalali\jDate::forge($date)->format('datetime');
 }
