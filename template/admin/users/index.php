@@ -29,12 +29,14 @@ require_once BASE_PATH . '/template/admin/layouts/header.php';
                     <td>
 
                         <?php if ($user['permission'] === 'admin'): ?>
-                            <a role="button" class="btn btn-sm btn-warning text-white" href="">click not to be admin</a>
+                            <a role="button" class="btn btn-sm btn-warning text-white"
+                                href="<?= url('admin/user/permission/' . $user['id']) ?>">click not to be admin</a>
                         <?php else: ?>
-                            <a role="button" class="btn btn-sm btn-success text-white" href="">click to be admin</a>
+                            <a role="button" class="btn btn-sm btn-success text-white"
+                                href="<?= url('admin/user/permission/' . $user['id']) ?>">click to be admin</a>
                         <?php endif ?>
 
-                        <a role="button" class="btn btn-sm btn-primary text-white" 
+                        <a role="button" class="btn btn-sm btn-primary text-white"
                             href="<?= url('admin/user/edit/' . $user['id']) ?>">edit</a>
                         <a role="button" class="btn btn-sm btn-danger text-white" 
                             href="<?= url('admin/user/delete/' . $user['id']) ?>">delete</a>

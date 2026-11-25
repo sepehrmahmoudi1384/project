@@ -9,17 +9,26 @@ require_once BASE_PATH . '/template/admin/layouts/header.php';
 <section class="row my-3">
     <section class="col-12">
 
-        <form method="post" action="<?= url('admin/user/update/' . $user['id']) ?>" enctype="multipart/form-data">
+        <form method="post" action="<?= url('admin/user/update/' . $user['id']) ?>">
             <div class="form-group">
                 <label for="username">Username</label>
                 <input type="text" class="form-control" id="username" name="username" value="<?= $user['username'] ?>">
             </div>
 
             <div class="form-group">
+                <label for="password">Password</label>
+                <input type="text" class="form-control" id="password" name="password" placeholder="Enter title ..." value="">
+            </div>
+
+            <div class="form-group">
                 <label for="permission">permission</label>
+                <?php
+                $user_selected = $user['permission'] === 'user' ? 'selected' : '';
+                $admin_selected = $user['permission'] === 'admin' ? 'selected' : '';
+                ?>
                 <select name="permission" id="permission" class="form-control" required autofocus>
-                    <option value="user">User</option>
-                    <option value="admin">Admin</option>
+                    <option value="user" <?= $user_selected ?>>User</option>
+                    <option value="admin" <?= $admin_selected ?>>Admin</option>
                 </select>
             </div>
             <button type="submit" class="btn btn-primary btn-sm">update</button>

@@ -205,7 +205,9 @@ uri('admin/banner/delete/{id}', 'Admin\Banner', 'delete');
 uri('admin/user', 'Admin\User', 'index');
 uri('admin/user/edit/{id}', 'Admin\User', 'edit');
 uri('admin/user/update/{id}', 'Admin\User', 'update', 'POST');
+uri('admin/user/permission/{id}', 'Admin\User', 'permission');
 uri('admin/user/delete/{id}', 'Admin\User', 'delete');
+
 
 // show 404 if no url match
 echo '404 - Not Found'; 
