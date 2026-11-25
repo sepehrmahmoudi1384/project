@@ -39,6 +39,7 @@ class Post extends Admin
         $db = new Database;
         if ($request['cat_id']) {
             $request['image'] = $this->saveImage($request['image'], 'post-image');
+
             if ($request['image']) {
                 $request = array_merge($request, ['user_id' => 1]);
                 $db->insert('posts', array_keys($request), $request);
