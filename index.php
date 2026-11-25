@@ -30,6 +30,7 @@ require_once 'activities/Admin/Admin.php';
 require_once 'activities/Admin/Category.php';
 require_once 'activities/Admin/Post.php';
 require_once 'activities/Admin/Banner.php';
+require_once 'activities/Admin/User.php';
 
 //
 // Create tables (run it once)
@@ -200,6 +201,11 @@ uri('admin/banner/edit/{id}', 'Admin\Banner', 'edit');
 uri('admin/banner/update/{id}', 'Admin\Banner', 'update', 'POST');
 uri('admin/banner/delete/{id}', 'Admin\Banner', 'delete');
 
+// user
+uri('admin/user', 'Admin\User', 'index');
+uri('admin/user/edit/{id}', 'Admin\User', 'edit');
+uri('admin/user/update/{id}', 'Admin\User', 'update', 'POST');
+uri('admin/user/delete/{id}', 'Admin\User', 'delete');
 
 // show 404 if no url match
 echo '404 - Not Found'; 
