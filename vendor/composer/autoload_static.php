@@ -10,6 +10,7 @@ class ComposerStaticInitb7e75af8cce1b9c2eb429c26ca14a02c
         'Admin\\Admin' => __DIR__ . '/../..' . '/activities/Admin/Admin.php',
         'Admin\\Banner' => __DIR__ . '/../..' . '/activities/Admin/Banner.php',
         'Admin\\Category' => __DIR__ . '/../..' . '/activities/Admin/Category.php',
+        'Admin\\Comment' => __DIR__ . '/../..' . '/activities/Admin/Comment.php',
         'Admin\\Post' => __DIR__ . '/../..' . '/activities/Admin/Post.php',
         'Admin\\User' => __DIR__ . '/../..' . '/activities/Admin/User.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',

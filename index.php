@@ -207,6 +207,10 @@ uri('admin/user/update/{id}', 'Admin\User', 'update', 'POST');
 uri('admin/user/permission/{id}', 'Admin\User', 'permission');
 uri('admin/user/delete/{id}', 'Admin\User', 'delete');
 
+// comment
+uri('admin/comment', 'Admin\Comment', 'index');
+uri('admin/comment/change-status/{id}', 'Admin\Comment', 'changeStatus');
+
 
 // show 404 if no url match
 echo '404 - Not Found';

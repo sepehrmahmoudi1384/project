@@ -9,6 +9,7 @@ return array(
     'Admin\\Admin' => $baseDir . '/activities/Admin/Admin.php',
     'Admin\\Banner' => $baseDir . '/activities/Admin/Banner.php',
     'Admin\\Category' => $baseDir . '/activities/Admin/Category.php',
+    'Admin\\Comment' => $baseDir . '/activities/Admin/Comment.php',
     'Admin\\Post' => $baseDir . '/activities/Admin/Post.php',
     'Admin\\User' => $baseDir . '/activities/Admin/User.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
