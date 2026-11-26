@@ -9,7 +9,12 @@ class Menu extends Admin
     public function index()
     {
         $db = new Database;
-        $menus = $db->select("SELECT * FROM menus ORDER BY id DESC");
+        $menus = $db
+            ->select("SELECT menus.*, parentMenus.name parent_name
+                FROM menus
+                LEFT JOIN menus parentMenus ON menus.parent_id = parentMenus.id
+                ORDER BY id DESC")
+            ->fetchAll();
         require_once BASE_PATH . '/template/admin/menus/index.php';
     }
 
@@ -33,27 +38,36 @@ class Menu extends Admin
     public function edit(int $id)
     {
         $db = new Database;
-        $category = $db
-            ->select("SELECT * FROM categories WHERE id=?", [$id])
+
+        $menu = $db
+            ->select('SELECT * FROM menus WHERE id=?', [$id])
             ->fetch();
 
-        if (!$category) {
-            $this->redirect('admin/category');
+        if(!$menu){
+            $this->redirectBack();
         }
 
-        require_once BASE_PATH . '/template/admin/categories/edit.php';
+        $parentMenus = $db
+            ->select("SELECT * 
+                FROM menus 
+                WHERE parent_id IS NULL AND id <> ?", [$menu['id']])
+            ->fetchAll();
+
+        require_once BASE_PATH . '/template/admin/menus/edit.php';
     }
 
     public function update(array $request, int $id)
     {
         $db = new Database;
-        $db->update("categories", $id, array_keys($request), $request);
-        $this->redirect('admin/category');
+        $request = array_filter($request);
+        $db->update("menus", $id, array_keys($request), $request);   
+        $this->redirect('admin/menu');
     }
 
-    public function delete(int $id) {
+    public function delete(int $id)
+    {
         $db = new Database;
-        $db->delete('categories', $id);
-        $this->redirect('admin/category');
+        $db->delete('menus', $id);
+        $this->redirect('admin/menu');
     }
 }

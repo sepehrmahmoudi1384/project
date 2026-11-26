@@ -35,13 +35,13 @@ require_once BASE_PATH . '/template/admin/layouts/header.php';
                         <?= $menu['url'] ?>
                     </td>
                     <td>
-                        <?= $menu['parent_id'] ?? 'منوی اصلی' ?>
+                        <?= $menu['parent_name'] ?? 'منوی اصلی' ?>
                     </td>
                     <td>
                         <a role="button" class="btn btn-sm btn-primary text-white" 
                             href="<?= url('admin/menu/edit/' . $menu['id']) ?>">edit</a>
                         <a role="button" class="btn btn-sm btn-danger text-white" 
-                            href="<?= url('admin/menu/edit/' . $menu['id']) ?>">delete</a>
+                            href="<?= url('admin/menu/delete/' . $menu['id']) ?>">delete</a>
                     </td>
                 </tr>
             <?php endforeach ?>
