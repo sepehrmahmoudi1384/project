@@ -12,6 +12,7 @@ return array(
     'Admin\\Comment' => $baseDir . '/activities/Admin/Comment.php',
     'Admin\\Menu' => $baseDir . '/activities/Admin/Menu.php',
     'Admin\\Post' => $baseDir . '/activities/Admin/Post.php',
+    'Admin\\Settings' => $baseDir . '/activities/Admin/Settings.php',
     'Admin\\User' => $baseDir . '/activities/Admin/User.php',
     'Composer\\InstalledVersions' => $vendorDir . '/composer/InstalledVersions.php',
     'Parsidev\\Jalali\\JalaliServiceProvider' => $baseDir . '/lib/Parsidev/Jalali/JalaliServiceProvider.php',

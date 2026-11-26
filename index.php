@@ -219,7 +219,11 @@ uri('admin/menu/edit/{id}', 'Admin\Menu', 'edit');
 uri('admin/menu/update/{id}', 'Admin\Menu', 'update', 'POST');
 uri('admin/menu/delete/{id}', 'Admin\Menu', 'delete');
 
-
+// settings
+uri('admin/settings', 'Admin\Settings', 'index');
+uri('admin/settings/edit', 'Admin\Settings', 'edit');
+uri('admin/settings/update', 'Admin\Settings', 'update', 'POST');
+uri('admin/settings/store', 'Admin\Settings', 'store', 'POST');
 
 // show 404 if no url match
 echo '404 - Not Found';

@@ -13,6 +13,7 @@ class ComposerStaticInitb7e75af8cce1b9c2eb429c26ca14a02c
         'Admin\\Comment' => __DIR__ . '/../..' . '/activities/Admin/Comment.php',
         'Admin\\Menu' => __DIR__ . '/../..' . '/activities/Admin/Menu.php',
         'Admin\\Post' => __DIR__ . '/../..' . '/activities/Admin/Post.php',
+        'Admin\\Settings' => __DIR__ . '/../..' . '/activities/Admin/Settings.php',
         'Admin\\User' => __DIR__ . '/../..' . '/activities/Admin/User.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
         'Parsidev\\Jalali\\JalaliServiceProvider' => __DIR__ . '/../..' . '/lib/Parsidev/Jalali/JalaliServiceProvider.php',

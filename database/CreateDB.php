@@ -27,7 +27,7 @@ class CreateDB extends Database
         UNIQUE KEY `uc_email_users` (`email`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;",
 
-        "CREATE TABLE `setting` (
+        "CREATE TABLE `settings` (
         `id` int(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
         `title` varchar(120) DEFAULT NULL,
         `description` text DEFAULT NULL,
