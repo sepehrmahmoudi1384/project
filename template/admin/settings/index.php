@@ -43,7 +43,7 @@ require_once BASE_PATH . '/template/admin/layouts/header.php';
                 <td>
                     <?php if (!empty($settings['logo'])): ?>
                         <img width="100px" height="100px"
-                            src="<?= $settings['logo'] ?>"
+                            src="<?= asset($settings['logo']) ?>"
                             alt="logo">
                     <?php endif ?>
                 </td>
@@ -52,7 +52,7 @@ require_once BASE_PATH . '/template/admin/layouts/header.php';
                 <td>Icon</td>
                 <td>
                     <?php if (!empty($settings['icon'])): ?>
-                        <img src="" alt="" width="100px" height="100px">
+                        <img src="<?= asset($settings['icon']) ?>" alt="" width="100px" height="100px">
                     <?php endif ?>
                 </td>
             </tr>

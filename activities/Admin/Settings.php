@@ -45,7 +45,8 @@ class Settings extends Admin
         if (!empty($request['logo']['tmp_name'])) {
             $request['logo'] = $this->saveImage(
                 $request['logo'],
-                'settings-image'
+                'settings',
+                'logo'
             );
         } else {
             unset($request['logo']);
@@ -54,40 +55,22 @@ class Settings extends Admin
         if (!empty($request['icon']['tmp_name'])) {
             $request['icon'] = $this->saveImage(
                 $request['icon'],
-                'settings-image'
+                'settings',
+                'icon'
             );
         } else {
             unset($request['icon']);
         }
 
-        $db->update("settings", 1, array_keys($request), $request);
+        $settings = $db
+            ->select("SELECT * FROM settings LIMIT 1")
+            ->fetch();
 
-        $this->redirect('admin/settings');
-    }
-
-    public function store(array $request)
-    {
-        $db = new Database;
-
-        if (!empty($request['logo']['tmp_name'])) {
-            $request['logo'] = $this->saveImage(
-                $request['logo'],
-                'settings-image'
-            );
+        if ($settings) {
+            $db->update("settings", $settings['id'], array_keys($request), $request);
         } else {
-            unset($request['logo']);
+            $db->insert('settings', array_keys($request), $request);
         }
-
-        if (!empty($request['icon']['tmp_name'])) {
-            $request['icon'] = $this->saveImage(
-                $request['icon'],
-                'settings-image'
-            );
-        } else {
-            unset($request['icon']);
-        }
-
-        $db->insert("settings", array_keys($request), $request);
 
         $this->redirect('admin/settings');
     }

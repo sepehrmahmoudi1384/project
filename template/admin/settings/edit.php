@@ -9,13 +9,9 @@ require_once BASE_PATH . '/template/admin/layouts/header.php';
 <section class="row my-3">
     <section class="col-12">
 
-        <?php 
-            $action = $edit_mode ? 'update' : 'store';
-        ?>
-
         <form
             method="post"
-            action="<?= url('admin/settings/' . $action) ?>"
+            action="<?= url('admin/settings/update') ?>"
             enctype="multipart/form-data">
 
             <div class="form-group">
